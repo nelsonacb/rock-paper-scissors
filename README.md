@@ -2,6 +2,8 @@
 
 A modern, real-time multiplayer Rock Paper Scissors game built with Next.js, TypeScript, and Socket.io. Features dark mode, responsive design, and best-of-three gameplay.
 
+![Project Screenshot o Demo](./public//preview.png)
+
 ## Features
 
 - **Real-Time Multiplayer**: Play against another player in real-time using WebSockets
@@ -17,6 +19,7 @@ A modern, real-time multiplayer Rock Paper Scissors game built with Next.js, Typ
 ## Technologies Used
 
 ### Frontend
+
 - **Next.js 16** - React framework with App Router
 - **React 19.2** - UI library
 - **TypeScript** - Type-safe JavaScript
@@ -26,6 +29,7 @@ A modern, real-time multiplayer Rock Paper Scissors game built with Next.js, Typ
 - **Lucide React** - Icon library
 
 ### Backend
+
 - **Node.js** - JavaScript runtime
 - **Express** - Web server framework
 - **Socket.io** - WebSocket server for real-time bidirectional communication
@@ -73,16 +77,19 @@ A modern, real-time multiplayer Rock Paper Scissors game built with Next.js, Typ
 ## Installation and Setup
 
 ### Prerequisites
+
 - Node.js 18+ installed
 - npm or yarn package manager
 
 ### 1. Clone the repository
+
 ```bash
 git clone <repository-url>
 cd rock-paper-scissors-game
 ```
 
 ### 2. Install dependencies
+
 ```bash
 npm install
 # or
@@ -90,6 +97,7 @@ yarn install
 ```
 
 ### 3. Environment Variables
+
 Create a `.env.local` file in the root directory:
 
 ```env
@@ -102,25 +110,31 @@ NEXT_PUBLIC_SOCKET_URL=http://your-server-url:3001
 ### 4. Run the project
 
 #### Development Mode
+
 You need to run **two commands** in separate terminals:
 
 **Terminal 1 - Next.js Frontend:**
+
 ```bash
 npm run dev
 # or
 yarn dev
 ```
+
 The app will be available at `http://localhost:3000`
 
 **Terminal 2 - Socket.io Server:**
+
 ```bash
 npm run server
 # or
 yarn server
 ```
+
 The WebSocket server will run at `http://localhost:3001`
 
 > **Note:** You need to add the `server` script to your `package.json`:
+
 ```json
 {
   "scripts": {
@@ -133,11 +147,13 @@ The WebSocket server will run at `http://localhost:3001`
 ```
 
 Also install `tsx` for running TypeScript directly:
+
 ```bash
 npm install -D tsx
 ```
 
 #### Production Mode
+
 ```bash
 # Build the Next.js app
 npm run build
@@ -152,16 +168,19 @@ npm run server
 ## How to Play
 
 1. **Player 1 (Host)**:
+
    - Enter your name
    - Click "Create Room"
    - Copy the generated room code and share it with Player 2
 
 2. **Player 2 (Guest)**:
+
    - Enter your name
    - Enter the room code from Player 1
    - Click "Join Room"
 
 3. **Gameplay**:
+
    - Both players select Rock, Paper, or Scissors
    - Results are shown in real-time
    - First to win 2 rounds wins the match
@@ -193,12 +212,15 @@ This project is structured to support future features:
 ## Deployment
 
 ### Vercel (Frontend)
+
 ```bash
 vercel deploy
 ```
 
 ### Server Deployment
+
 Deploy the Socket.io server separately on platforms like:
+
 - Railway
 - Render
 - Heroku
