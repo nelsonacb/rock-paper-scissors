@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-interface RoundInfoProps {
-  currentRound: number
-  maxRounds: number
-  gameStarted: boolean
-  finished: boolean
-}
+import { RoundInfoProps } from "@/interfaces";
 
-export function RoundInfo({ currentRound, maxRounds, gameStarted, finished }: RoundInfoProps) {
+export function RoundInfo({
+  currentRound,
+  maxRounds,
+  gameStarted,
+  finished,
+}: RoundInfoProps) {
   return (
     <div className="flex items-center justify-between bg-muted p-4 rounded-lg">
       <div>
@@ -20,11 +20,17 @@ export function RoundInfo({ currentRound, maxRounds, gameStarted, finished }: Ro
       <div className="text-right">
         <p className="text-xs text-muted-foreground">Status</p>
         <p
-          className={`text-sm font-bold ${finished ? "text-destructive" : gameStarted ? "text-success" : "text-muted-foreground"}`}
+          className={`text-sm font-bold ${
+            finished
+              ? "text-destructive"
+              : gameStarted
+              ? "text-success"
+              : "text-muted-foreground"
+          }`}
         >
           {finished ? "Finished" : gameStarted ? "Playing" : "Waiting"}
         </p>
       </div>
     </div>
-  )
+  );
 }

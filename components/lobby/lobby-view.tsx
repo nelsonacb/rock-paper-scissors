@@ -1,30 +1,29 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { CreateRoomSection } from "./create-room-section"
-import { JoinRoomSection } from "./join-room-section"
+import { useState } from "react";
+import { CreateRoomSection } from "./create-room-section";
+import { JoinRoomSection } from "./join-room-section";
+import { LobbyViewProps } from "@/interfaces";
 
-interface LobbyViewProps {
-  onGameStart: (code: string, isCreator: boolean) => void
-  isLoading?: boolean
-  generatedCode?: string | null
-}
-
-export function LobbyView({ onGameStart, isLoading, generatedCode }: LobbyViewProps) {
-  const [activeTab, setActiveTab] = useState<"create" | "join">("create")
+export function LobbyView({
+  onGameStart,
+  isLoading,
+  generatedCode,
+}: LobbyViewProps) {
+  const [activeTab, setActiveTab] = useState<"create" | "join">("create");
 
   const handleRoomCreated = (playerName: string) => {
-    console.log("[v0] Create room button clicked with playerName:", playerName)
-    onGameStart(playerName, true)
-  }
+    console.log("Create room button clicked with playerName:", playerName);
+    onGameStart(playerName, true);
+  };
 
   const handleRoomJoined = (code: string) => {
-    console.log("[v0] Room join initiated with code:", code)
-    onGameStart(code, false)
-  }
+    console.log("Room join initiated with code:", code);
+    onGameStart(code, false);
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-card text-foreground">
+    <div className="min-h-screen bg-linear-to-b from-background to-card text-foreground">
       <div className="max-w-2xl mx-auto px-4 py-8 md:py-16">
         {/* Hero section */}
         <div className="text-center mb-12 md:mb-16 space-y-4">
@@ -35,9 +34,12 @@ export function LobbyView({ onGameStart, isLoading, generatedCode }: LobbyViewPr
             <span className="text-muted-foreground">/</span>
             <span>✌️</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold">Rock Paper Scissors</h2>
+          <h2 className="text-3xl md:text-5xl font-bold">
+            Rock Paper Scissors
+          </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-md mx-auto">
-            Play with a friend in real-time. First to win 2 rounds wins the game!
+            Play with a friend in real-time. First to win 2 rounds wins the
+            game!
           </p>
         </div>
 
@@ -68,16 +70,27 @@ export function LobbyView({ onGameStart, isLoading, generatedCode }: LobbyViewPr
         {/* Tab content */}
         <div>
           {activeTab === "create" ? (
-            <CreateRoomSection onRoomCreated={handleRoomCreated} isLoading={isLoading} generatedCode={generatedCode} />
+            <CreateRoomSection
+              onRoomCreated={handleRoomCreated}
+              isLoading={isLoading}
+              generatedCode={generatedCode}
+            />
           ) : (
-            <JoinRoomSection onRoomJoined={handleRoomJoined} isLoading={isLoading} />
+            <JoinRoomSection
+              onRoomJoined={handleRoomJoined}
+              isLoading={isLoading}
+            />
           )}
         </div>
 
         {/* Footer info */}
         <div className="mt-12 text-center space-y-4 text-sm text-muted-foreground">
-          <p>Best-of-3 format: First player to win 2 rounds wins the entire match</p>
-          <p className="text-xs">Ties don't count - keep playing until someone wins!</p>
+          <p>
+            Best-of-3 format: First player to win 2 rounds wins the entire match
+          </p>
+          <p className="text-xs">
+            Ties don't count - keep playing until someone wins!
+          </p>
           <div className="flex items-center justify-center gap-2 flex-wrap">
             <span className="inline-block">✊ Beats ✌️</span>
             <span className="inline-block">•</span>
@@ -88,5 +101,5 @@ export function LobbyView({ onGameStart, isLoading, generatedCode }: LobbyViewPr
         </div>
       </div>
     </div>
-  )
+  );
 }

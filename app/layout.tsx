@@ -1,16 +1,13 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import { Providers } from "./providers"
-import "./globals.css"
-
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+import type React from "react";
+import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { Providers } from "./providers";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Rock Paper Scissors - Multiplayer Game",
-  description: "Play Rock Paper Scissors in real-time with a friend using WebSockets",
+  description:
+    "Play Rock Paper Scissors in real-time with a friend using WebSockets",
   generator: "v0.app",
   icons: {
     icon: [
@@ -29,12 +26,12 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -43,5 +40,5 @@ export default function RootLayout({
         <Analytics />
       </body>
     </html>
-  )
+  );
 }

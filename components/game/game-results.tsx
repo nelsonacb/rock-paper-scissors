@@ -1,16 +1,7 @@
-"use client"
+"use client";
 
-import type { GameRoom } from "@/lib/socket-types"
-import { Trophy, ArrowRight, LogOut, Users } from "lucide-react"
-
-interface GameResultsProps {
-  room: GameRoom
-  scores: { [key: string]: number }
-  onPlayAgain: () => void
-  onDisconnect: () => void
-  waitingForRematch?: boolean
-  rematchPlayersReady?: number
-}
+import { GameResultsProps } from "@/interfaces";
+import { Trophy, ArrowRight, LogOut, Users } from "lucide-react";
 
 export function GameResults({
   room,
@@ -20,12 +11,13 @@ export function GameResults({
   waitingForRematch = false,
   rematchPlayersReady = 0,
 }: GameResultsProps) {
-  const [player1, player2] = room.players
+  const [player1, player2] = room.players;
 
-  const player1Score = scores[player1.id] || 0
-  const player2Score = scores[player2.id] || 0
+  const player1Score = scores[player1.id] || 0;
+  const player2Score = scores[player2.id] || 0;
 
-  const winner = player1Score >= 2 ? player1 : player2Score >= 2 ? player2 : null
+  const winner =
+    player1Score >= 2 ? player1 : player2Score >= 2 ? player2 : null;
 
   if (!winner) {
     return (
@@ -37,11 +29,11 @@ export function GameResults({
           </button>
         </div>
       </div>
-    )
+    );
   }
 
-  const isPlayer1Winner = winner.id === player1.id
-  const loser = isPlayer1Winner ? player2 : player1
+  const isPlayer1Winner = winner.id === player1.id;
+  const loser = isPlayer1Winner ? player2 : player1;
 
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4 py-12">
@@ -55,21 +47,39 @@ export function GameResults({
 
         <div className="space-y-6">
           <div className="bg-primary/10 p-6 rounded-lg border-2 border-primary">
-            <p className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">Winner</p>
-            <p className="text-4xl font-bold text-primary mb-1">{winner.name}</p>
-            <p className="text-lg text-muted-foreground">Congratulations! You won the match!</p>
+            <p className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">
+              Winner
+            </p>
+            <p className="text-4xl font-bold text-primary mb-1">
+              {winner.name}
+            </p>
+            <p className="text-lg text-muted-foreground">
+              Congratulations! You won the match!
+            </p>
           </div>
 
           <div className="grid grid-cols-2 gap-4 bg-muted p-6 rounded-lg">
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground font-medium">{player1.name}</p>
-              <p className={`text-4xl font-bold ${isPlayer1Winner ? "text-primary" : "text-muted-foreground"}`}>
+              <p className="text-sm text-muted-foreground font-medium">
+                {player1.name}
+              </p>
+              <p
+                className={`text-4xl font-bold ${
+                  isPlayer1Winner ? "text-primary" : "text-muted-foreground"
+                }`}
+              >
                 {player1Score}
               </p>
             </div>
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground font-medium">{player2.name}</p>
-              <p className={`text-4xl font-bold ${!isPlayer1Winner ? "text-primary" : "text-muted-foreground"}`}>
+              <p className="text-sm text-muted-foreground font-medium">
+                {player2.name}
+              </p>
+              <p
+                className={`text-4xl font-bold ${
+                  !isPlayer1Winner ? "text-primary" : "text-muted-foreground"
+                }`}
+              >
                 {player2Score}
               </p>
             </div>
@@ -83,8 +93,14 @@ export function GameResults({
               Waiting for opponent ({rematchPlayersReady}/2)
               <div className="flex gap-1 ml-2">
                 <div className="w-1 h-1 bg-white rounded-full animate-bounce"></div>
-                <div className="w-1 h-1 bg-white rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
-                <div className="w-1 h-1 bg-white rounded-full animate-bounce" style={{ animationDelay: "0.4s" }}></div>
+                <div
+                  className="w-1 h-1 bg-white rounded-full animate-bounce"
+                  style={{ animationDelay: "0.2s" }}
+                ></div>
+                <div
+                  className="w-1 h-1 bg-white rounded-full animate-bounce"
+                  style={{ animationDelay: "0.4s" }}
+                ></div>
               </div>
             </div>
           ) : (
@@ -107,9 +123,10 @@ export function GameResults({
         </div>
 
         <p className="text-xs text-muted-foreground pt-4 border-t border-border">
-          Final score: {winner.name} wins {Math.max(player1Score, player2Score)}-{Math.min(player1Score, player2Score)}
+          Final score: {winner.name} wins {Math.max(player1Score, player2Score)}
+          -{Math.min(player1Score, player2Score)}
         </p>
       </div>
     </div>
-  )
+  );
 }

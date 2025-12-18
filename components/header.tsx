@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useTheme } from "@/hooks/use-theme"
-import { Moon, Sun } from "lucide-react"
+import { useTheme } from "@/hooks/use-theme";
+import { Moon, Sun } from "lucide-react";
 
 export function Header() {
-  const { isDark, toggleTheme } = useTheme()
+  const { isDark, toggleTheme } = useTheme();
 
   return (
     <header className="border-b border-border bg-card sticky top-0 z-40">
@@ -12,8 +12,12 @@ export function Header() {
         <div className="flex items-center gap-2 md:gap-3">
           <div className="text-2xl md:text-3xl">🎮</div>
           <div className="min-w-0">
-            <h1 className="text-lg md:text-xl font-bold truncate">Rock Paper Scissors</h1>
-            <p className="text-xs text-muted-foreground hidden md:block">Multiplayer Real-time Game</p>
+            <h1 className="text-lg md:text-xl font-bold truncate">
+              Rock Paper Scissors
+            </h1>
+            <p className="text-xs text-muted-foreground hidden md:block">
+              Multiplayer Real-time Game
+            </p>
           </div>
         </div>
 
@@ -26,5 +30,5 @@ export function Header() {
         </button>
       </div>
     </header>
-  )
+  );
 }

@@ -1,20 +1,20 @@
-import { create } from "zustand"
-import { persist } from "zustand/middleware"
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 interface ThemeStore {
-  isDark: boolean
-  toggleTheme: () => void
-  setTheme: (isDark: boolean) => void
+  isDark: boolean;
+  toggleTheme: () => void;
+  setTheme: (isDark: boolean) => void;
 }
 
 interface GameStore {
-  playerName: string
-  setPlayerName: (name: string) => void
-  roomCode: string | null
-  setRoomCode: (code: string | null) => void
-  gameState: "lobby" | "waiting" | "playing" | "finished"
-  setGameState: (state: "lobby" | "waiting" | "playing" | "finished") => void
-  reset: () => void
+  playerName: string;
+  setPlayerName: (name: string) => void;
+  roomCode: string | null;
+  setRoomCode: (code: string | null) => void;
+  gameState: "lobby" | "waiting" | "playing" | "finished";
+  setGameState: (state: "lobby" | "waiting" | "playing" | "finished") => void;
+  reset: () => void;
 }
 
 export const useThemeStore = create<ThemeStore>()(
@@ -26,9 +26,9 @@ export const useThemeStore = create<ThemeStore>()(
     }),
     {
       name: "theme-storage",
-    },
-  ),
-)
+    }
+  )
+);
 
 export const useGameStore = create<GameStore>((set) => ({
   playerName: "",
@@ -43,4 +43,4 @@ export const useGameStore = create<GameStore>((set) => ({
       roomCode: null,
       gameState: "lobby",
     }),
-}))
+}));

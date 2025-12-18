@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useEffect } from "react"
-import { useThemeStore } from "@/lib/store"
+import { useEffect } from "react";
+import { useThemeStore } from "@/lib/store";
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  const isDark = useThemeStore((state) => state.isDark)
+  const isDark = useThemeStore((state) => state.isDark);
 
   useEffect(() => {
     if (isDark) {
-      document.documentElement.classList.add("dark")
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove("dark")
+      document.documentElement.classList.remove("dark");
     }
-  }, [isDark])
+  }, [isDark]);
 
-  return <>{children}</>
+  return <>{children}</>;
 }

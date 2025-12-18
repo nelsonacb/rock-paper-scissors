@@ -1,22 +1,15 @@
-"use client"
+"use client";
 
-import type { GameChoice } from "@/lib/game-logic"
-import { Zap } from "lucide-react"
+import { CHOICES } from "@/data";
+import { GameChoicesProps } from "@/interfaces";
+import { Zap } from "lucide-react";
 
-const CHOICES: { value: GameChoice; label: string; icon: string }[] = [
-  { value: "rock", label: "Rock", icon: "✊" },
-  { value: "paper", label: "Paper", icon: "✋" },
-  { value: "scissors", label: "Scissors", icon: "✌️" },
-]
-
-interface GameChoicesProps {
-  onChoose: (choice: GameChoice) => void
-  disabled?: boolean
-  selectedChoice?: GameChoice | null
-  isWaiting?: boolean
-}
-
-export function GameChoices({ onChoose, disabled, selectedChoice, isWaiting }: GameChoicesProps) {
+export function GameChoices({
+  onChoose,
+  disabled,
+  selectedChoice,
+  isWaiting,
+}: GameChoicesProps) {
   return (
     <div className="space-y-4">
       <p className="text-center text-sm font-medium text-muted-foreground">
@@ -29,10 +22,14 @@ export function GameChoices({ onChoose, disabled, selectedChoice, isWaiting }: G
             key={choice.value}
             onClick={() => onChoose(choice.value)}
             disabled={disabled || isWaiting}
-            className={`game-choice-btn transition-all ${selectedChoice === choice.value ? "active border-2" : ""}`}
+            className={`game-choice-btn transition-all ${
+              selectedChoice === choice.value ? "active border-2" : ""
+            }`}
           >
             <span className="text-4xl md:text-5xl">{choice.icon}</span>
-            <span className="text-xs md:text-sm font-semibold text-center">{choice.label}</span>
+            <span className="text-xs md:text-sm font-semibold text-center">
+              {choice.label}
+            </span>
           </button>
         ))}
       </div>
@@ -44,5 +41,5 @@ export function GameChoices({ onChoose, disabled, selectedChoice, isWaiting }: G
         </div>
       )}
     </div>
-  )
+  );
 }

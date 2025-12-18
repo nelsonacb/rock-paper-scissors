@@ -1,15 +1,14 @@
-"use client"
+"use client";
 
-import { RotateCcw, LogOut } from "lucide-react"
+import { GameMenuProps } from "@/interfaces";
+import { RotateCcw, LogOut } from "lucide-react";
 
-interface GameMenuProps {
-  onPlayAgain: () => void
-  onDisconnect: () => void
-  disabled?: boolean
-  waitingForRematch?: boolean
-}
-
-export function GameMenu({ onPlayAgain, onDisconnect, disabled, waitingForRematch }: GameMenuProps) {
+export function GameMenu({
+  onPlayAgain,
+  onDisconnect,
+  disabled,
+  waitingForRematch,
+}: GameMenuProps) {
   return (
     <div className="flex items-center justify-end gap-2 mb-4">
       <button
@@ -31,5 +30,5 @@ export function GameMenu({ onPlayAgain, onDisconnect, disabled, waitingForRematc
         <span className="hidden sm:inline">Disconnect</span>
       </button>
     </div>
-  )
+  );
 }
