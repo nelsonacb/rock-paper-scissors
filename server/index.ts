@@ -20,10 +20,6 @@ const io = new SocketIOServer(httpServer, {
 const rooms = new Map<string, GameRoom>();
 const playAgainRequests = new Map<string, Set<string>>();
 
-app.get("/health", (req, res) => {
-  res.json({ status: "ok" });
-});
-
 io.on("connection", (socket: Socket) => {
   console.log("Socket.io Client connected:", socket.id);
 

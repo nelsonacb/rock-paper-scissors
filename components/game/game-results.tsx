@@ -33,7 +33,6 @@ export function GameResults({
   }
 
   const isPlayer1Winner = winner.id === player1.id;
-  const loser = isPlayer1Winner ? player2 : player1;
 
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4 py-12">
